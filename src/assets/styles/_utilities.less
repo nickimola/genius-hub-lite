@@ -1,0 +1,35 @@
+.backgroundMixin(@color){
+    background: @color;
+    background-color: @color;
+    color: contrast(@color, black, white, 40%)
+}
+
+.borderMixin(@color){
+    box-shadow: 0 0px 0px 1px @color;
+}
+
+.genius{
+    &-bg-white{.backgroundMixin(white);}
+    &-bg-main{.backgroundMixin(@main);}
+    &-bg-dark{.backgroundMixin(@darkGray);}
+    &-bg-success{.backgroundMixin(@flatGreen);}
+    &-bg-warning{.backgroundMixin(@flatYellow);}
+    &-bg-error{.backgroundMixin(@flatRed);}
+    &-bg-info{.backgroundMixin(@flatBlue);}
+
+    &-color-white{color: white;}
+    &-color-main{color: @main;}
+    &-color-dark{color: @darkGray ;}
+    &-color-success{color: @flatGreen ;}
+    &-color-warning{color: @flatYellow ;}
+    &-color-error{color: @flatRed ;}
+    &-color-info{color: @flatBlue ;}
+
+    &-border-white{.borderMixin(white);}
+    &-border-main{.borderMixin(@main);}
+    &-border-dark{.borderMixin(@darkGray);}
+    &-border-success{.borderMixin(@flatGreen);}
+    &-border-warning{.borderMixin(@flatYellow);}
+    &-border-error{.borderMixin(@flatRed);}
+    &-border-info{.borderMixin(@flatBlue);}
+}

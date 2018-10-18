@@ -1,0 +1,55 @@
+.genius-intro-container {
+    padding: 10px;
+    .genius-description-section-container {
+        margin-bottom: 10px;
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+    .title {
+        font-weight: bold;
+        line-height: 60px;
+        font-size: 18px;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    .genius-marker-container {
+        top: 15px;
+        position: relative;
+        width: 64%;
+        margin: 0 auto;
+        display: block;
+        left: -4px;
+        height: 38px;
+        .genius-marker {
+            background: @main;
+            color: @textDark;
+            position: absolute;
+            border-radius: 50%;
+            height: 25px;
+            width: 25px;
+            line-height: 25px;
+            top: 0px;
+            font-size: 11px;
+            background-color: @main;
+            -webkit-border-bottom-left-radius: 0;
+            -webkit-border-bottom-right-radius: 12.5px;
+            -webkit-border-top-right-radius: 12.5px;
+            -webkit-border-top-left-radius: 12.5px;
+            -webkit-transform: rotate(-47deg);
+            box-shadow: -1px 1px 3px #cacaca;
+            body.dark-true &{
+                box-shadow: -1px 1px 3px #242424;
+            }
+            &:after {
+                left: 0;
+                position: absolute;
+                content: attr(data-value)'h';
+                -webkit-transform: rotate(47deg);
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}

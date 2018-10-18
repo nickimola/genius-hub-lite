@@ -1,0 +1,55 @@
+<!-- Switch room type in the list -->
+<ion-view ion-scroll="true">
+        <ion-content class="genius-intro-container">
+
+                <span class="title genius-color-main">What's Genius Hub - Lite?</span>
+                It is a Google Chrome extension that allows you to quickly adjust the temperature of a zone without having to open the entire
+                app.
+                <br> This extension lives in you chrome extension bar and it's available from anywhere.
+
+                <div class="genius-description-section-container">
+                        <span class="title genius-color-main">Override for how long?</span>
+                        How long would you like to override for?
+                        <br>
+                        <small>(this can be adjusted from the options panel later on)</small>
+<div class="genius-marker-container">
+<span class="genius-marker" style="right: calc(100% - {{generatePercentage(overrideFor.time)}}%); margin-right: {{mapRanges(overrideFor.time)}}px"
+        data-value="{{overrideFor.time}}"></span>
+</div>
+                        <div class="range range-dark">
+                                <span class="range-label">1h</span>
+                                <input type="range" name="warmup-duration-range" min="1" max="23" value="{{overrideFor.time}}" ng-model="overrideFor.time"
+                                        on-release="saveOverrideTime(overrideFor.time)" on-tap="saveOverrideTime(overrideFor.time)" on-drag-end="saveOverrideTime(overrideFor.time)"
+                                        class="">
+                                <span class="range-label">23h</span>
+                        </div>
+
+
+                </div>
+                <div class="genius-description-section-container">
+                        <span class="title genius-color-main">Early Bird or Night owl?</span>
+                        Which theme suits you best?
+                        <br>
+                        <small>(again, can be changed from the opitons panel)</small>
+
+                        <div class="swapWrapper">
+                                <input type="checkbox" name="dn" ng-model="settings.dark" ng-change="swapTheme()" />
+                                <label for="dn" class="swap" ng-click="swapTheme()">
+                                        <span class="swap__handler">
+                                                <span class="crater crater--1"></span>
+                                                <span class="crater crater--2"></span>
+                                                <span class="crater crater--3"></span>
+                                        </span>
+                                        <span class="star star--1"></span>
+                                        <span class="star star--2"></span>
+                                        <span class="star star--3"></span>
+                                        <span class="star star--4"></span>
+                                        <span class="star star--5"></span>
+                                        <span class="star star--6"></span>
+                                </label>
+                        </div>
+                </div>
+                <br>
+                <button class="btn-genius button-block" ng-click="evtClickTourstartApp()">Start</button>
+        </ion-content>
+</ion-view>

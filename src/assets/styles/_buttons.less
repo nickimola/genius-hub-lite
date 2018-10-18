@@ -1,0 +1,70 @@
+.btnDefaultMixin{
+    outline: none;
+    border:none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    text-transform: uppercase;
+    color: @darkGray;
+    cursor: pointer;    
+    &[disabled], &.disabled{
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.5;
+    }
+}
+
+
+.btn-genius {
+    .btnDefaultMixin;
+    background: @main;    
+    &:hover,&:active,&:focus {background: darken(@main, 5%)}
+    &[disabled], &.disabled{background: lighten(@main, 10%)}
+
+    &-dark {
+        .btnDefaultMixin;
+        background: @darkGray;
+        color: white;
+        &:hover,&:active,&:focus {background: darken(@darkGray, 5%);}
+        &[disabled], &.disabled{background: lighten(@darkGray, 10%)}
+    }
+    &-success {
+        .btnDefaultMixin;
+        background: @flatGreen;
+        color: white;
+        &:hover,&:active,&:focus {background: darken(@flatGreen, 5%);}
+    }    
+    &-error{
+        .btnDefaultMixin;
+        background: @flatRed;
+        color: white;
+        &:hover,&:active,&:focus {background: darken(@flatRed, 5%);}
+    }
+}
+    
+.btn-genius-line {
+    .btnDefaultMixin;
+    border: 1px solid @main;
+    background: white;
+    &:hover,&:active,&:focus {background: @main;outline: 0;}
+    &-dark{
+        .btnDefaultMixin;
+        border: 1px solid @darkGray;
+        background: white;
+        &:hover,&:active,&:focus {background: @darkGray;outline: 0;color: white;}
+        &[disabled], &.disabled{background: lighten(@lightGray, 10%)}
+    }
+    &-success{
+        .btnDefaultMixin;
+        border: 1px solid @flatGreen;
+        background: white;
+        &:hover,&:active,&:focus {background: @flatGreen;outline: 0;color: white;}
+        &[disabled], &.disabled{background: lighten(@lightGray, 10%)}
+    }
+    &-error{
+        .btnDefaultMixin;
+        border: 1px solid @flatRed;
+        background: white;
+        &:hover,&:active,&:focus {background: @flatRed;outline: 0;color: white;}
+        &[disabled], &.disabled{background: lighten(@lightGray, 10%)}
+    }
+}

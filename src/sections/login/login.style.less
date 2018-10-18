@@ -1,0 +1,69 @@
+.genius-app-lite__login-screen-container {
+    .genius-logo-container {
+        width: 100%;
+        display: block;
+        text-align: center;
+        img {
+            max-width: 125px;
+            margin: 0 auto;
+        }
+    }
+    .genius-form-group {
+        .label {
+            display: inline-block;
+        }
+        textarea {
+            resize: none;
+            ::-webkit-scrollbar {
+                width: 0px;
+            }
+        }
+        .genius-description-section-container{
+            line-height: 15px;
+            margin-bottom: 10px;
+            padding-top:5px;
+            border-top: 1px solid @middleGray;
+        }
+    }
+    .scroll,
+    .form {
+        background: @lightGray;
+        color: @darkGray;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        padding: 10px;
+        body.dark-true & {
+            background: @darkGray;
+            color: @lightGray;
+        }
+    }
+    .genius-footer {
+        position: fixed;
+        bottom: 10px;
+        width: 100%;
+        left: 0;
+        text-align: center;
+		a {
+		color: @main;
+		}
+    }
+    .genius-status-container {
+        height: auto;
+        display: block;
+        width: 100%;
+        text-align: center;
+        color: @textDark;
+        body.dark-true & {
+            color: @textLight;
+        }
+        .genius-spinner-container {
+            height: 60px;
+            margin-top:10px;
+            ;
+        }
+        .genius-message-failed-true {
+            padding: 10px;
+        }
+    }
+}

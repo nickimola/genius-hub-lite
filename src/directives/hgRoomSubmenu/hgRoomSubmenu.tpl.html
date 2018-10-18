@@ -1,0 +1,12 @@
+<div class="hg-full-screen-body-overlay" ng-if="showToggleMenu" ng-click="hideRoomSubmenu()"></div>
+<div class="hg-submenu" title="Room submenu">
+    <!-- Menu Icon -->
+    <div class="hg-submenu-icon">
+        <i class="icon"
+           ng-class="showToggleMenu ? 'ion-close-round' : icon"
+           ng-click="changeIcon()"></i>
+    </div>
+    <!-- Menu -->
+    <div ng-transclude class="list hg-submenu-content" ng-class="showToggleMenu ? 'active' : ''"></div>
+</div>
+
