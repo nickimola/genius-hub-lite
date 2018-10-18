@@ -1,0 +1,19 @@
+{
+  "name": "Genius App - Lite",
+  "app_id": "",
+  "documentRoot": "www",
+  "gulpStartupTasks": [
+    "watch"
+  ],
+  "integrations": {
+    "gulp": {},
+    "cordova": {}
+  },
+  "type": "ionic1",
+  "watchPatterns": [
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
+}

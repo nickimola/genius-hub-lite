@@ -1,0 +1,168 @@
+.gaps-loop(@i, @prevgap) when (@i > 0) {
+  @gap: extract(@gaps, @i);
+  @temp: extract(@temps, @i);
+  .span-gen-loop(@j) when (@j < @gap) {
+    @k: @j + @prevgap;
+    .temp-@{k} {
+      display: block;
+      background: @temp;
+      color: contrast(@temp, #000, #fff, 40%);
+    }
+    .temp-color-@{k}{
+      color: @temp;
+    }
+    .span-gen-loop(@j + 1);
+  }
+  .span-gen-loop(0);
+  .gaps-loop(@i - 1, @prevgap + @gap);
+}
+
+.gaps-loop(length(@gaps), 0);
+.animate-color-change {
+  transition: background 0.8s ease;
+}
+
+.entry-external-container {
+  font-family: "Roboto", sans-serif;
+  height: @entryHeight;
+  min-height: @entryHeight;
+  font-size: 14px;
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  align-items: flex-end;
+  padding: 0;
+  margin: 0;
+  position: relative;
+
+  .dataName {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 2px;
+    left: 10px;
+    z-index: 2;
+    animation-timing-function: ease-in-out;
+    animation: dataNameOut 0.1s forwards;
+    transform-origin: left center;
+    pointer-events: none;
+  }
+  .dataValue {
+    display: block;
+    width: 50px;
+    position: absolute;
+    top: 2px;
+    text-align: right;
+    right: 20px;
+    z-index: 2;
+    transform-origin: right center;
+    animation-timing-function: ease-in-out;
+    animation: dataValueZoomOut 0.1s forwards;
+    pointer-events: none;
+  }
+  .slidecontainer {
+    width: 100%;
+    .custom-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      outline: none;
+      border: none;
+      margin: 0;
+      animation: sliderAnimationBackgroundOut 0.3s;
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: @sliderThumbWidth;
+        height: @sliderThumbHeight;
+        background: white;
+        cursor: pointer;
+        transition: height 0.25s, box-shadow 0.4s;
+        border-color:rgba(0, 0, 0, 0.25);
+        border-style:solid;
+        border-width: 1px;
+        border-radius: 3px;
+        &:hover,
+        &:active {
+          border-radius: 0px 3px 3px 0;
+          height: @sliderTrackHoverHeight;
+          border-left: none;
+          -webkit-box-shadow: -7px 0px 7px -2px rgba(0, 0, 0, 0.2);
+          -moz-box-shadow: -7px 0px 7px -2px rgba(0, 0, 0, 0.2);
+          box-shadow: -7px 0px 7px -2px rgba(0, 0, 0, 0.2);
+          background: -webkit-gradient(
+            linear,
+            -20 0,
+            100% 0,
+            from(transparent),
+            to(white),
+            color-stop(80%, white)
+          );
+        }
+      }
+    }
+  }
+}
+
+@keyframes sliderAnimationBackgroundIn {
+  0% {
+    opacity: 0.7;
+    height: @sliderTrackHoverHeight;
+  }
+  100% {
+    opacity: 1;
+    height: @entryHeight;
+  }
+}
+@keyframes sliderAnimationBackgroundOut {
+  0% {
+    opacity: 1;
+    height: @entryHeight;
+  }
+  100% {
+    opacity: 0.7;
+    height: @sliderTrackHoverHeight;
+  }
+}
+
+@keyframes dataNameOut {
+  100% {
+    transform: scale(1);
+    top: 5px;
+  }
+  0% {
+    transform: scale(1.2);
+    top: 5px;
+  }
+}
+@keyframes dataNameIn {
+  0% {
+    transform: scale(1);
+    top: 5px;
+  }
+  100% {
+    transform: scale(1.2);
+    top: 5px;
+  }
+}
+
+@keyframes dataValueZoomIn {
+  0% {
+    transform: scale(1);
+    top: 5px;
+  }
+  100% {
+    transform: scale(1.2);
+    top: 5px;
+  }
+}
+@keyframes dataValueZoomOut {
+  100% {
+    transform: scale(1);
+    top: 5px;
+  }
+  0% {
+    transform: scale(1.2);
+    top: 5px;
+  }
+}

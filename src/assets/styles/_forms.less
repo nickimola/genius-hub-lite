@@ -1,0 +1,238 @@
+.inputMixin(@background, @color, @border, @shadowColor) {
+    border: none;
+    background: @background;
+    color: @color;
+    box-shadow: 0 0px 0px 1px @border, 0 4px 10px 0 rgba(red(@shadowColor), green(@shadowColor), blue(@shadowColor), 0.2);
+    &::placeholder {
+        color: lighten(@middleGray, 5%);
+        font-size: 0.9rem;
+        font-family: "lato", sans-serif;
+    }
+}
+
+.inputColors(@bg, @color, @borderDarknessPercentage: 5%) {
+    .inputMixin(white, black, darken(@bg, @borderDarknessPercentage), @darkGray);
+}
+
+.validationMessageMixin(){
+    position: relative;
+    display: block;
+    width: 100%;
+    left: 0px;
+    bottom: 0;
+    font-size: 13px;
+    padding-top: 5px;
+}
+
+.textAreaMixin(){
+    min-height: 80px;
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+input[type="color"],
+input[type="date"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url	"],
+input[type="week"] {
+    &.default {
+        padding: 8px;
+        border-radius: 8px;
+        .inputMixin(white, black, @lightGray, @darkGray);
+        &:focus,
+        &.active {
+            outline: none;
+            .inputMixin(white, black, darken(@lightGray, 5%), darken(@darkGray, 12%));
+        }
+        &.disabled, &[disabled]{
+            background: @lightGray;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+    }
+    &.dark {
+        .inputMixin(@darkGray, white, @lightGray, @darkGray);
+        padding: 10px;
+        border-radius: 8px;
+        &:focus,
+        &.active {
+            outline: none;
+            .inputMixin(@darkGray, white, darken(@lightGray, 10%), @darkGray);
+        }
+        &.disabled, &[disabled]{
+            pointer-events: none;
+            opacity: 0.7;
+        }
+    }
+    &.success {
+        padding: 8px;
+        border-radius: 8px;
+        .inputColors(@flatGreen, black);
+        &:focus,
+        &.active {
+            outline: none;
+            .inputColors(@flatGreen, black, 15%);
+        }
+        &.disabled, &[disabled]{
+            background: @lightGray;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+    }
+    &.warning {
+        padding: 8px;
+        border-radius: 8px;
+        .inputColors(@flatYellow, black);
+        &:focus,
+        &.active {
+            outline: none;
+            .inputColors(@flatYellow, black, 15%);
+        }
+        &.disabled, &[disabled]{
+            background: @lightGray;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+    }
+    &.error {
+        padding: 8px;
+        border-radius: 8px;
+        .inputColors(@flatRed, black);
+        &:focus,
+        &.active {
+            outline: none;
+            .inputColors(@flatRed, black, 15%);
+        }
+        &.disabled, &[disabled]{
+            background: @lightGray;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+    }
+    &.info {
+        padding: 8px;
+        border-radius: 8px;
+        .inputColors(@flatBlue, black);
+        &:focus,
+        &.active {
+            outline: none;
+            .inputColors(@flatBlue, black, 15%);
+        }
+        &.disabled, &[disabled]{
+            background: @lightGray;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+    }
+}
+
+.genius-form-group {
+    position: relative;
+    .label{
+        margin-bottom:5px;
+        display:block;
+    }
+    .validation-message {
+        &-success{.validationMessageMixin;color: @flatGreen;}
+        &-error{.validationMessageMixin;color: @flatRed;}
+        &-warning{.validationMessageMixin;color: @flatYellow;}
+        &-info{.validationMessageMixin;color: @flatBlue;}
+    }
+}
+
+
+textarea{
+        .inputMixin(white, black, @lightGray, @darkGray);
+        .textAreaMixin;
+        &:focus,
+        &.active {
+            outline: none;
+            .inputMixin(white, black, darken(@lightGray, 5%), darken(@darkGray, 12%));
+        }
+        &.disabled, &[disabled]{
+            background: @lightGray;
+            pointer-events: none;
+            opacity: 0.7;
+            resize: none;
+        }
+    
+    &.dark {
+        .inputMixin(@darkGray, white, @lightGray, @darkGray);
+        .textAreaMixin;        
+        &:focus,
+        &.active {
+            outline: none;
+            .inputMixin(@darkGray, white, darken(@lightGray, 10%), @darkGray);
+        }
+    }
+    &.success {
+        .inputMixin(@darkGray, white, @lightGray, @darkGray);
+        .textAreaMixin;        
+        .inputColors(@flatGreen, black);
+        &:focus,
+        &.active {
+            outline: none;
+            .inputColors(@flatGreen, black, 15%);
+        }
+        &.disabled, &[disabled]{
+            background: @lightGray;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+    }
+    &.warning {
+        .inputMixin(@darkGray, white, @lightGray, @darkGray);
+        .textAreaMixin;
+        .inputColors(@flatYellow, black);
+        &:focus,
+        &.active {
+            outline: none;
+            .inputColors(@flatYellow, black, 15%);
+        }
+        &.disabled, &[disabled]{
+            background: @lightGray;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+    }
+    &.error {
+        .inputMixin(@darkGray, white, @lightGray, @darkGray);
+        .textAreaMixin;
+        .inputColors(@flatRed, black);
+        &:focus,
+        &.active {
+            outline: none;
+            .inputColors(@flatRed, black, 15%);
+        }
+        &.disabled, &[disabled]{
+            background: @lightGray;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+    }
+    &.info {
+        .inputMixin(@darkGray, white, @lightGray, @darkGray);
+        .textAreaMixin;
+        .inputColors(@flatBlue, black);
+        &:focus,
+        &.active {
+            outline: none;
+            .inputColors(@flatBlue, black, 15%);
+        }
+        &.disabled, &[disabled]{
+            background: @lightGray;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+    }
+}

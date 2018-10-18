@@ -1,0 +1,42 @@
+<ion-view>
+    <ion-content class="genius-app-lite__login-screen-container">
+
+        <div class="genius-logo-container">
+            <img src="{{settings.dark == true ? '/assets/images/logo-light.png' : '/assets/images/logo-dark.png'}}" />
+        </div>
+
+        <div class="genius-form-group">
+            <i class="icon ion-help genius-color-main" ng-click="tokenHelp()"></i>
+            <label for="genius-token" class="label">Access token</label>
+            <br>
+            <div class="genius-description-section-container" ng-if="needTokenHelp == true">
+                <small>In order to login to your system, please add below an authorized token.
+                <br> If you don't have one yet (or the one used before is expired), please follow the instructions on this page
+                to create a new one:
+                <a target="_blank" class="genius-color-main" href="https://my.geniushub.co.uk">my.geniushub.co.uk</a>.
+</small>
+                <br>
+            </div>
+            <textarea class="default" id="genius-token" placeholder="Token" autocorrect="off" autocapitalize="none" value="" ng-model="settings.provisionalToken"></textarea>
+        </div>
+        <br>
+        <div class="genius-status-container open-{{status.spinner}}">
+            <div class="genius-spinner-container" ng-if="status.spinner">
+                <ion-spinner></ion-spinner>
+                <br> {{status.text}}
+            </div>
+            <div class="genius-message-failed-{{status.failed}} genius-color-error" ng-if="!status.spinner">
+                {{status.text}}
+            </div>
+        </div>
+        
+        <label class="">
+<button class="btn-genius button-block" type="submit" id="loginButton" ng-click="login()" ng-class="settings.provisionalToken.length > 0 ? '' : 'disabled'">Log in</button>
+        </label>
+
+        <div class="genius-footer">
+            <small>Made with
+                <span class="icon ion-heart genius-color-main"></span> by <a href="http:/nicholaslazzerini.com" target="_blank">Nicholas Lazzerini.</a></small>
+        </div>
+    </ion-content>
+</ion-view>

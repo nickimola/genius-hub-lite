@@ -1,0 +1,17 @@
+<div>
+    <div class="entry-external-container">
+        <div class="slidecontainer">
+            <input  type="range"
+                    step="1"
+                    min="{{zone.minMaxValues.min}}"
+                    max="{{zone.minMaxValues.max}}"
+                    ng-value="tempToBoost.temp"
+                    class="custom-slider animate-color-change temp-{{sanitizeTempClass(tempToBoost.temp)}}"
+                    ng-model="tempToBoost.temp"
+                    on-tap="boostZone(zone, tempToBoost)"
+                    on-drag-end="boostZone(zone, tempToBoost)"/>
+            <span class="dataName">{{zone.name}}</span>
+            <span class="dataValue">{{tempToBoost.temp}}&deg;C</span>
+        </div>
+    </div>
+</div>
